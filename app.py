@@ -11,6 +11,8 @@ import calendar
 import plotly.express as px
 import plotly.graph_objects as go
 from streamlit_option_menu import option_menu
+import os
+import requests
 
 # Page configuration
 st.set_page_config(
@@ -1534,7 +1536,43 @@ def show_countdown():
         """, unsafe_allow_html=True)
     else:
         st.info("No upcoming festivals in the next few months." if st.session_state.language == "english" else "తదుపరి కొన్ని నెలల్లో రాబోయే పండుగలు లేవు.")
+# AI Festival Story Generator
+def show_ai_generator():
+    st.title("✨ AI Festival Story Generator")
+    st.markdown("Generate beautiful festival stories instantly")
 
+    festival = st.text_input("Enter festival name")
+
+    if st.button("Generate Story"):
+        if festival:
+            festivals = get_festival_data()
+
+            if festival in festivals:
+                data = festivals[festival]
+
+                story = f"""
+{festival} is one of the most beautiful festivals celebrated in Andhra Pradesh and Telangana.
+
+It is known as "{data.get('telugu_name', festival)}" in Telugu.
+
+This festival is celebrated during {data['date']}. 
+People follow beautiful rituals like {", ".join(data['rituals'][:2])}. 
+Families prepare delicious foods such as {", ".join(data['foods'][:2])}.
+
+On this day, everyone wears {", ".join(data['attire'][:1])} and participates in cultural events and traditional dances.
+
+{festival} brings happiness, unity, and positivity to every home. It reminds us of our rich culture and traditions.
+
+✨ This festival truly fills hearts with joy and togetherness.
+"""
+
+                st.success("Story Generated!")
+                st.write(story)
+
+            else:
+                st.warning("Festival not found in database. Try a listed festival name.")
+        else:
+            st.warning("Please enter a festival name.")
 # Main app
 def main():
     load_css()
@@ -1550,7 +1588,7 @@ def main():
     st.sidebar.title("📱 Navigation")
     page = st.sidebar.radio(
         "Choose a page" if st.session_state.language == "english" else "పేజీని ఎంచుకోండి",
-        ["🏠 Home", "🎊 Festival Explorer", "📅 Calendar", "⏰ Reminders", "📸 Gallery", "🧠 Quiz", "🗺️ Map", "📖 Stories", "🖼️ Posters", "⚙️ Admin", "📝 Submit Tradition"]
+        ["🏠 Home", "🎊 Festival Explorer", "📅 Calendar", "⏰ Reminders", "📸 Gallery", "🧠 Quiz", "🗺️ Map", "📖 Stories", "🖼️ Posters", "⚙️ Admin", "📝 Submit Tradition","🤖 AI Generator"]
     )
     
     # Display current language
@@ -1581,6 +1619,8 @@ def main():
         show_admin_panel()
     elif page == "📝 Submit Tradition":
         show_submit_form()
+    elif page == "🤖 AI Generator":
+        show_ai_generator()
     
     # Show footer
     show_footer()
