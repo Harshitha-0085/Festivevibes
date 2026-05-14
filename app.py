@@ -725,39 +725,215 @@ def language_toggle():
 
 # Homepage
 def show_homepage():
+
     st.markdown("""
-    <div class="main-header">
-        <h1>🎉 FestiveVibe – Celebrating Telugu Festivals</h1>
-        <p style="font-size: 1.2rem; margin-top: 1rem;">Explore traditions from Sankranti to Bathukamma</p>
-        <p style="font-size: 1rem; margin-top: 0.5rem;">సంక్రాంతి నుండి బతుకమ్మ వరకు సంప్రదాయాలను అన్వేషించండి</p>
+    <style>
+
+    .hero-section {
+        background: linear-gradient(135deg, #ff6b35, #ff9f43, #ffcc70);
+        padding: 4rem 2rem;
+        border-radius: 25px;
+        text-align: center;
+        color: white;
+        box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+        margin-bottom: 2rem;
+    }
+
+    .hero-title {
+        font-size: 4rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.3rem;
+        opacity: 0.95;
+    }
+
+    .feature-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        transition: 0.3s;
+        height: 100%;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .feature-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .stat-box {
+        background: linear-gradient(135deg,#ffffff,#f7f7f7);
+        padding: 1.5rem;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .quote-box {
+        background: linear-gradient(135deg,#fff5e6,#ffe0b2);
+        padding: 2rem;
+        border-left: 8px solid #ff6b35;
+        border-radius: 15px;
+        margin-top: 2rem;
+        text-align: center;
+        font-size: 1.2rem;
+        font-style: italic;
+    }
+
+    </style>
+    """, unsafe_allow_html=True)
+
+    # HERO SECTION
+    st.markdown("""
+    <div class="hero-section">
+        <div class="hero-title">🎉 FESTIVEVIBE</div>
+        <div class="hero-subtitle">
+            Celebrating Telugu Culture, Traditions & Festivals ✨
+        </div>
+        <br>
+        <p>
+        Discover the beauty of Andhra Pradesh and Telangana festivals,
+        traditions, rituals, food, dance, and cultural heritage.
+        </p>
     </div>
     """, unsafe_allow_html=True)
-    
-    # Welcome message
-    if st.session_state.language == "telugu":
+
+    # STATS SECTION
+    st.markdown("## 🌟 Platform Highlights")
+
+    col1, col2, col3, col4 = st.columns(4)
+
+    with col1:
         st.markdown("""
-        ## స్వాగతం! 🙏
-        
-        **FestiveVibe**లోకి స్వాగతం! మన తెలుగు సంస్కృతి మరియు సంప్రదాయాలను జరుపుకునే అందమైన పండుగలను అన్వేషించండి.
-        
-        ఈ వెబ్సైట్ ద్వారా మీరు:
-        - ఆంధ్రప్రదేశ్ మరియు తెలంగాణలో జరుపుకునే పండుగలను తెలుసుకోవచ్చు
-        - ప్రతి పండుగ గురించి వివరాలు తెలుసుకోవచ్చు
-        - మీ స్థానిక సంప్రదాయాలను పంచుకోవచ్చు
-        - మన సంస్కృతి గురించి మరింత తెలుసుకోవచ్చు
-        """)
-    else:
+        <div class="stat-box">
+            <h1>40+</h1>
+            <p>Festivals</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col2:
         st.markdown("""
-        ## Welcome! 🙏
-        
-        Welcome to **FestiveVibe**! Explore the beautiful festivals that celebrate our Telugu culture and traditions.
-        
-        Through this website, you can:
-        - Learn about festivals celebrated in Andhra Pradesh and Telangana
-        - Discover details about each festival
-        - Share your local traditions
-        - Learn more about our culture
-        """)
+        <div class="stat-box">
+            <h1>2</h1>
+            <p>States Covered</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col3:
+        st.markdown("""
+        <div class="stat-box">
+            <h1>100+</h1>
+            <p>Traditions</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col4:
+        st.markdown("""
+        <div class="stat-box">
+            <h1>∞</h1>
+            <p>Cultural Memories</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.write("")
+
+    # FEATURE SECTION
+    st.markdown("## 🚀 Explore Features")
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.markdown("""
+        <div class="feature-card">
+            <div class="feature-icon">🎊</div>
+            <h3>Festival Explorer</h3>
+            <p>
+            Learn detailed information about Telugu festivals,
+            rituals, food, dances, and traditions.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col2:
+        st.markdown("""
+        <div class="feature-card">
+            <div class="feature-icon">📸</div>
+            <h3>Cultural Gallery</h3>
+            <p>
+            Explore beautiful festival memories,
+            community photos, and celebrations.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col3:
+        st.markdown("""
+        <div class="feature-card">
+            <div class="feature-icon">🧠</div>
+            <h3>Festival Quiz</h3>
+            <p>
+            Test your knowledge about Telugu culture
+            and improve cultural awareness.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.write("")
+
+    # EXTRA FEATURES
+    col4, col5, col6 = st.columns(3)
+
+    with col4:
+        st.markdown("""
+        <div class="feature-card">
+            <div class="feature-icon">📅</div>
+            <h3>Festival Calendar</h3>
+            <p>
+            Track upcoming festivals and important
+            cultural celebration dates.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col5:
+        st.markdown("""
+        <div class="feature-card">
+            <div class="feature-icon">📖</div>
+            <h3>Stories & Traditions</h3>
+            <p>
+            Read community stories and preserve
+            traditional cultural memories.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col6:
+        st.markdown("""
+        <div class="feature-card">
+            <div class="feature-icon">🌍</div>
+            <h3>Cultural Awareness</h3>
+            <p>
+            Promote Telugu traditions digitally
+            for future generations.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    # QUOTE SECTION
+    st.markdown("""
+    <div class="quote-box">
+        “A culture lives through its festivals, traditions, and people.” ✨
+    </div>
+    """, unsafe_allow_html=True)
     
     # Quick stats
     festivals = get_festival_data()
