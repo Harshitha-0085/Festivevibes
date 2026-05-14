@@ -3,3 +3,7 @@ pandas>=2.0.0
 Pillow>=10.0.0
 plotly>=5.15.0
 streamlit-option-menu>=0.3.6 
+streamlit-option-menu
+plotly
+streamlit-lottie
+hydralit-components
