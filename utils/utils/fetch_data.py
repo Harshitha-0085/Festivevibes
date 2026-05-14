@@ -9,15 +9,15 @@ def fetch_festival_data(festival_name):
             sentences=5
         )
 
-        page = wikipedia.page(festival_name)
+        page = wikipedia.page(
+            festival_name
+        )
 
-        data = {
+        return {
             "title": page.title,
             "summary": summary,
             "url": page.url
         }
-
-        return data
 
     except:
 
