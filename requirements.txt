@@ -7,3 +7,4 @@ streamlit-option-menu
 plotly
 streamlit-lottie
 hydralit-components
+wikipedia
