@@ -1034,6 +1034,6 @@ elif page == "🤖 AI Generator":
 # Show footer
 show_footer()
 
-if name == " "__main__":
+if name == "__main__":
     main()
 
