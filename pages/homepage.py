@@ -1,7 +1,6 @@
 import streamlit as st
 import random
-from app import get_festival_data
-
+from utils.data import get_festival_data
 def show_homepage():
 
     festivals = get_festival_data()
