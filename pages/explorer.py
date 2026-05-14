@@ -1,24 +1,40 @@
 import streamlit as st
-from utils.data import get_festival_data
+from utils.fetch_data import fetch_festival_data
 
 def show_festival_explorer():
 
-    festivals = get_festival_data()
-
     st.title("🎊 Festival Explorer")
 
-    for festival,data in festivals.items():
+    festival = st.text_input(
+        "Search Telugu Festival"
+    )
 
-        st.markdown(f"""
+    if festival:
 
-        <div class='festival-card'>
+        with st.spinner("Searching festival..."):
 
-        <h3>{festival}</h3>
+            data = fetch_festival_data(festival)
 
-        <p>{data["description"]}</p>
+        if data:
 
-        <p>📅 {data["date"]}</p>
+            st.markdown(f"""
 
-        </div>
+            <div class='festival-card'>
 
-        """, unsafe_allow_html=True)
+            <h1>{data["title"]}</h1>
+
+            <p>{data["summary"]}</p>
+
+            <a href="{data["url"]}" target="_blank">
+            Read More
+            </a>
+
+            </div>
+
+            """, unsafe_allow_html=True)
+
+        else:
+
+            st.error(
+                "Festival not found"
+            )
